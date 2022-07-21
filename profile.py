@@ -24,7 +24,7 @@ for i in range(2):
   if i == 0:
     node.addService(rspec.Execute(shell="sh", command="sudo bash /local/repository/setup_apache.sh"))
   else:
-    node.addService(rspec.Execute(shell="sh", command="sudo bash /local/repository/setup_nfs.sh"))
+    node.addService(rspec.Execute(shell="sh", command="sudo bash /local/repository/observer.sh"))
     
 # Print the RSpec to the enclosing page.
 portal.context.printRequestRSpec()
