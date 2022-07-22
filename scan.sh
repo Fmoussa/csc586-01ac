@@ -4,13 +4,16 @@ set -x
 #might not need line 5
 #sudo nano /share/log/unauthorized.log
 
-grep -i -E "invalid|failed" /var/log/auth.log | while read -r line ; do
+sudo grep -i -E "invalid|failed" /var/log/auth.log | while read -r line ; do
   date=$(echo $line | grep -i -o -E "^[a-z]*\s[0-9]*\s")
   ip_address=$(echo $line | grep -o -E "[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}")
   country=$(curl -s ipinfo.io/$ip_address | grep -o -P '(?<="country": )[^ ]*' | grep -io "[a-z]*")
   
-  echo "$ip_address $country $date"
-done >> /share/log/unauthorized.log
+  if [ -n "$ip_address" ]
+  then
+    echo "$ip_address $country $date" | sudo tee -a /share/log/unauthorized.log
+  fi
+done 
 
 
 #ip address
