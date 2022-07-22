@@ -1,6 +1,21 @@
 #!/bin/bash
 set -x
 
+#might not need line 5
+#sudo nano /share/log/unauthorized.log
+
+#ip address
+sudo bash -c 'grep -i -E "invalid|failed" /var/log/auth.log | grep -E "[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}" >> /share/log/unauthorized.log'
+
+
+#location
+curl -s ipinfo.io/183.107.50.18 | grep -o -P '(?<="country": )[^ ]*' | grep -io "[a-z]*"
+
+
+
+
+
+
 sudo bash -c 'cat /var/log/auth.log | grep sshd >> /share/log/unauthorized.log'
 sudo cat /var/log/auth.log | grep -E '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}'
 sudo cat /var/log/auth.log | grep -E 'Invalid|Failed'
