@@ -11,12 +11,12 @@ sudo systemctl restart nfs-kernel-server
 
 
 
-#crontab -l > tempcron
-#echo "*/5 * * * * /local/repository/scan.sh" >> tempcron
-#crontab tempcron
-#rm tempcron
+crontab -l > tempcron
+echo "*/5 * * * * /local/repository/scan.sh" >> tempcron
+crontab tempcron
+rm tempcron
 
 #crontab -l | { echo "*/5 * * * * /local/repository/scan.sh"; } | crontab -
 #(crontab -l ; echo "*/5 * * * * /local/repository/scan.sh) | crontab -
 
-(crontab -l ; echo "*/5 * * * * /local/repository/scan.sh) | crontab -
+#(crontab -l ; echo "*/5 * * * * /local/repository/scan.sh) | crontab -
