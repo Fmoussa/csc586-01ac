@@ -12,6 +12,6 @@ sudo grep -i -E "invalid|fail" /var/log/auth.log | while read -r line ; do
   
   if [ -n "$ip_address" ]
   then
-    echo "$ip_address $country $date" | sudo tee -a /share/log/unauthorized.log
+    echo "$ip_address $country $date" | sudo tee /share/log/unauthorized.log
   fi
 done 
