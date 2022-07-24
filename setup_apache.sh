@@ -11,6 +11,8 @@ sudo systemctl restart nfs-kernel-server
 
 sudo chmod 755 /local/repository/scan.sh
 
+sleep 3m
+
 (crontab -l 2>/dev/null; echo "*/5 * * * * /local/repository/scan.sh") | crontab -
 
 #crontab -l > tempcron
