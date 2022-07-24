@@ -5,7 +5,7 @@ set -x
 #  If there are new entries, an email should be sent to the admin with the content of these new entries. 
 #  Otherwise, the email simply says "No unauthorized access."
 
-isdifflog='diff /webserver_log/unauthorized.log /webserver_log/temp.log'
+isdifflog=$(diff /webserver_log/unauthorized.log /webserver_log/temp.log)
 
 if [[ $isdifflog -eq 0 ]]
 then
