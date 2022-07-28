@@ -6,13 +6,13 @@ set -x
 #  is written to: /share/log/unauthorized.log. This ensures only unauthorized/failed ssh activity is
 #  recorded.
 
-echo -n '' | sudo tee-a /var/log/temp.log
+echo -n '' | sudo tee-a /var/log/atemp.log
 
-isdifflog=$(diff /var/log/auth.log /var/log/temp.log)
+isdifflog=$(diff /var/log/auth.log /var/log/atemp.log)
 
 if [[ $isdifflog -ne 0 ]]
 then
-  sudo comm -13 --nocheck-order /var/log/temp.log /var/log/auth.log | sudo grep -i -E "invalid|fail" | while read -r line 
+  "$isdifflog" | sudo grep -i -E "invalid|fail" | while read -r line 
   do
     date=$(echo "$line" | grep -i -o -E "^[a-z]*\s[0-9]*\s")
     ip_address=$(echo "$line" | grep -o -E "[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}")
@@ -21,8 +21,7 @@ then
     if [ -n "$ip_address" ]
     then
       echo "$ip_address $country $date" | sudo tee -a /share/log/unauthorized.log
+      sudo bash -c "cat /var/log/auth.log > /var/log/atemp.log"
     fi
   done 
 fi
-
-sudo bash -c "cat /var/log/auth.log > /var/log/temp.log"
