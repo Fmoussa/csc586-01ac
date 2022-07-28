@@ -12,6 +12,5 @@ then
   echo "No unauthorized access" | mail -s "No New Unauthorized Access" so749257@wcupa.edu
 else
   echo -n "Unauthorized access report: $isdifflog" | mail -s "New Unauthorized Access" so749257@wcupa.edu
+  sudo bash -c "cat /webserver_log/unauthorized.log > /webserver_log/temp.log"
 fi
-
-sudo bash -c "cat /webserver_log/unauthorized.log > /webserver_log/temp.log"
