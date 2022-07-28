@@ -12,7 +12,7 @@ isdifflog=$(diff /var/log/auth.log /var/log/temp.log)
 
 if [[ $isdifflog -ne 0 ]]
 then
-  sudo comm -13 --nocheck-order /var/log/auth.log /var/log/temp.log | sudo grep -i -E "invalid|fail" | while read -r line 
+  sudo comm -13 --nocheck-order /var/log/temp.log /var/log/auth.log | sudo grep -i -E "invalid|fail" | while read -r line 
   do
     date=$(echo "$line" | grep -i -o -E "^[a-z]*\s[0-9]*\s")
     ip_address=$(echo "$line" | grep -o -E "[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}")
