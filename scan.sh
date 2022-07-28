@@ -10,7 +10,7 @@ echo -n '' | sudo tee -a /var/log/atemp.log
 
 isdifflog=$(sudo diff /var/log/auth.log /var/log/atemp.log)
 
-if [[ "$isdifflog" -ne 0 ]]
+if [[ "$isdifflog" != "" ]]
 then
   sudo comm -1 -3 /var/log/atemp.log /var/log/auth.log | sudo grep -i -E "invalid|fail" | while read -r line 
   do
