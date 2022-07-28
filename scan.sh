@@ -20,8 +20,9 @@ then
   
     if [ -n "$ip_address" ]
     then
-      echo "$ip_address $country $date" | sudo tee -a /share/log/unauthorized.log
-      sudo bash -c "cat /var/log/auth.log > /var/log/atemp.log"
+      echo "$ip_address $country $date" | sudo tee -a /share/log/unauthorized.log 
     fi
   done 
+  
+  sudo bash -c "cat /var/log/auth.log > /var/log/atemp.log"
 fi
