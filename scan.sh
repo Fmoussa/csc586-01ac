@@ -24,5 +24,5 @@ then
     fi
   done 
   
-  sudo bash -c "cat /var/log/auth.log > /var/log/atemp.log"
+  sudo cat /var/log/auth.log | sudo tee /var/log/atemp.log
 fi
