@@ -16,7 +16,7 @@ then
   do
     date=$(echo "$line" | grep -i -o -E "^[a-z]*\s[0-9]*\s")
     ip_address=$(echo "$line" | grep -o -E "[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}")
-    country=$(curl -s ipapi.co/$ip_address/country_name/)
+    country=$(curl -s https://ipapi.co/$ip_address/country_name/)
   
     if [[ -n "$ip_address" ]]
     then
