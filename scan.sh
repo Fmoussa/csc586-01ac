@@ -18,7 +18,7 @@ then
     ip_address=$(echo "$line" | grep -o -E "[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}")
     country=$(curl -s ipapi.co/$ip_address/country_name/)
   
-    if [ -n "$ip_address" ]
+    if [[ -n "$ip_address" ]]
     then
       echo "$ip_address $country $date" | sudo tee -a /share/log/unauthorized.log 
     fi
