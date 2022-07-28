@@ -8,7 +8,7 @@ set -x
 
 echo -n '' | sudo tee -a /var/log/atemp.log
 
-isdifflog=$(diff /var/log/auth.log /var/log/atemp.log)
+isdifflog=$(sudo diff /var/log/auth.log /var/log/atemp.log)
 
 if [[ $isdifflog -ne 0 ]]
 then
