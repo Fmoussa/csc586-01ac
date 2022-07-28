@@ -9,7 +9,7 @@ echo -n '' | sudo tee -a /var/log/atemp.log
 
 isdifflog=$(sudo diff /webserver_log/unauthorized.log /webserver_log/atemp.log)
 
-if [[ $isdifflog -eq 0 ]]
+if [[ "$isdifflog" -eq 0 ]]
 then
   echo "No unauthorized access" | mail -s "No New Unauthorized Access" so749257@wcupa.edu
 else
