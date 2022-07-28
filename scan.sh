@@ -6,7 +6,7 @@ set -x
 #  is written to: /share/log/unauthorized.log. This ensures only unauthorized/failed ssh activity is
 #  recorded.
 
-echo -n '' | sudo tee-a /var/log/atemp.log
+echo -n '' | sudo tee -a /var/log/atemp.log
 
 isdifflog=$(diff /var/log/auth.log /var/log/atemp.log)
 
