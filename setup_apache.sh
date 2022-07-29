@@ -13,6 +13,11 @@ sudo chmod 755 /local/repository/scan.sh
 
 sleep 3m
 
+sudo apt install -y nfs-common
+sudo mkdir /nfs/home
+sleep 2m
+sudo mount 192.168.1.3:/nfs/home nfs/home/
+
 (crontab -l 2>/dev/null; echo "*/5 * * * * /local/repository/scan.sh") | crontab -
 
 #crontab -l > tempcron
