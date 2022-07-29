@@ -5,7 +5,7 @@ set -x
 #  If there are new entries, an email should be sent to the admin with the content of these new entries. 
 #  Otherwise, the email simply says "No unauthorized access."
 
-echo -n '' | sudo tee -a /var/log/atemp.log
+echo -n '' | sudo tee -a /webserver_log/atemp.log
 
 isdifflog=$(sudo diff /webserver_log/unauthorized.log /webserver_log/atemp.log)
 
