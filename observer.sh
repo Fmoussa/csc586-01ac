@@ -1,6 +1,7 @@
 #!/bin/bash
 set -x
 
+sudo apt update
 sudo apt install -y nfs-common
 sudo mkdir webserver_log
 sudo mkdir /nfs/home
