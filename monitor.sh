@@ -17,7 +17,7 @@ isdifflog=$(sudo diff /webserver_log/unauthorized.log /webserver_log/atemp.log)
 #  unauthorized.log.
 # If $isdifflog is not "", then an email is sent to the user with the subject line: "New Unauthorized 
 #  Access," and the contents of $isdifflog. Then, the contents of atemp.log are overwritten with the
-#  contents of unauthorized.log to prepare them for the next time this shell file runs.
+#  contents of unauthorized.log to prepare the log files for the next time this shell file runs.
 # If $isdifflog is "", then an email is sent to the suer with the subject line: "No New Unauthorized
 #  Access."
 if [[ "$isdifflog" != "" ]] 
