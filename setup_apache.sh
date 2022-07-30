@@ -14,13 +14,3 @@ sudo chmod 755 /local/repository/scan.sh
 sleep 3m
 
 (crontab -l 2>/dev/null; echo "*/5 * * * * /local/repository/scan.sh") | crontab -
-
-#crontab -l > tempcron
-#echo "*/5 * * * * su so749257 -c /local/repository/scan.sh" >> tempcron
-#crontab tempcron
-#rm tempcron
-
-#crontab -l | { echo "*/5 * * * * /local/repository/scan.sh"; } | crontab -
-#(crontab -l ; echo "*/5 * * * * /local/repository/scan.sh) | crontab -
-
-#(crontab -l ; echo "*/5 * * * * /local/repository/scan.sh) | crontab -
