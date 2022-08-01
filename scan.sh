@@ -23,7 +23,7 @@ if [[ "$isdifflog" != "" ]]
 then
   sudo comm -1 -3 /var/log/atemp.log /var/log/auth.log | sudo grep -i -E "invalid|fail" | while read -r line 
   do
-    date=$(echo "$line" | grep -i -o -E "^[a-z]*\s[0-9]*\s")
+    date=$(echo "$line" | grep -i -o -E "^[a-z]*.\s[0-9]*\s")
     ip_address=$(echo "$line" | grep -o -E "[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}")
     country=$(curl -s https://ipapi.co/$ip_address/country_name/)
   
